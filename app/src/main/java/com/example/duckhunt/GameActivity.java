@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 public class GameActivity extends AppCompatActivity {
     TextView tvCounterDucks, tvTimer, tvNick;
     ImageView ivDuck;
+    int counter;
 
 
     @Override
@@ -28,25 +29,50 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        tvCounterDucks = findViewById(R.id.textViewCounter);
-        tvTimer = findViewById(R.id.textViewTimer);
-        tvNick = findViewById(R.id.texViewNick);
-        ivDuck = findViewById(R.id.imageViewDuck);
+        initViewComponents();
+        eventos();
 
-        //Cambiar tipo de fuente
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "pixel.ttf");
-        tvCounterDucks.setTypeface(typeface);
-        tvTimer.setTypeface(typeface);
-        tvNick.setTypeface(typeface);
+    }
 
-        //Extras: obtener nick y setear TextView
-        Bundle extras = getIntent().getExtras();
-        String nick = extras.getString(Constantes.EXTRA_NICK);
-        tvNick.setText(nick);
+    private void initViewComponents(){
+            tvCounterDucks = findViewById(R.id.textViewCounter);
+            tvTimer = findViewById(R.id.textViewTimer);
+            tvNick = findViewById(R.id.texViewNick);
+            ivDuck = findViewById(R.id.imageViewDuck);
+
+            //Cambiar tipo de fuente
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "pixel.ttf");
+            tvCounterDucks.setTypeface(typeface);
+            tvTimer.setTypeface(typeface);
+            tvNick.setTypeface(typeface);
+
+            //Extras: obtener nick y setear TextView
+            Bundle extras = getIntent().getExtras();
+            String nick = extras.getString(Constantes.EXTRA_NICK);
+            tvNick.setText(nick);
+
+        }
+
+        private void eventos(){
+                ivDuck.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Que queremos hacer al dar click en el pato
+                        //Incrementamos el contador con el numero de patos
+                        counter++;
+                        tvCounterDucks.setText(String.valueOf(counter));
+
+
+
+                    }
+                });
+
+        }
 
 
 
 
     }
 
-}
+
+
