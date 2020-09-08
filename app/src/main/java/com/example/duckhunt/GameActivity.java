@@ -35,6 +35,22 @@ public class GameActivity extends AppCompatActivity {
         initViewComponents();
         eventos();
         initPantalla();
+        initCuentaAtras();
+
+    }
+
+    private void initCuentaAtras() {
+        new CountDownTimer(60000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                long segundosRestantes = millisUntilFinished / 1000;
+                tvTimer.setText(segundosRestantes + "s");
+            }
+
+            public void onFinish() {
+                tvTimer.setText( "0s");
+            }
+        }.start();
 
     }
 
@@ -108,8 +124,6 @@ public class GameActivity extends AppCompatActivity {
         //a esa posicion
         ivDuck.setX(randomX);
         ivDuck.setY(randomY);
-
-
 
     }
 
