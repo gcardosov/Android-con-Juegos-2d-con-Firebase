@@ -33,6 +33,12 @@ public class GameActivity extends AppCompatActivity {
         tvNick = findViewById(R.id.texViewNick);
         ivDuck = findViewById(R.id.imageViewDuck);
 
+        //Cambiar tipo de fuente
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "pixel.ttf");
+        tvCounterDucks.setTypeface(typeface);
+        tvTimer.setTypeface(typeface);
+        tvNick.setTypeface(typeface);
+
         //Extras: obtener nick y setear TextView
         Bundle extras = getIntent().getExtras();
         String nick = extras.getString(Constantes.EXTRA_NICK);
