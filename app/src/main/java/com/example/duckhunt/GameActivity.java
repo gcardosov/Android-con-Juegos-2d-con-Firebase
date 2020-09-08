@@ -21,7 +21,10 @@ import java.util.ResourceBundle;
 public class GameActivity extends AppCompatActivity {
     TextView tvCounterDucks, tvTimer, tvNick;
     ImageView ivDuck;
-    int counter;
+    int counter = 0;
+    int anchoPantalla;
+    int altoPantalla;
+    Random aleatorio;
 
 
     @Override
@@ -31,6 +34,21 @@ public class GameActivity extends AppCompatActivity {
 
         initViewComponents();
         eventos();
+        initPantalla();
+
+    }
+
+    private void initPantalla() {
+        //1. Conocer el tamaño de la pantalla del dispositivo
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        anchoPantalla = size.x;
+        altoPantalla = size.y;
+
+        //2. Inicializamos objeto para generar numeros aleatorios
+        aleatorio = new Random();
+
 
     }
 
@@ -61,18 +79,42 @@ public class GameActivity extends AppCompatActivity {
                         //Incrementamos el contador con el numero de patos
                         counter++;
                         tvCounterDucks.setText(String.valueOf(counter));
-
-
+                        //cambiar la imagen del pato
+                        ivDuck.setImageResource(R.drawable.duck_clicked);
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                ivDuck.setImageResource(R.drawable.duck);
+                                moveDuck();
+                            }
+                        }, 500);
 
                     }
                 });
 
         }
 
+    private void moveDuck() {
+        int min = 0;
+        int maximoX = anchoPantalla - ivDuck.getWidth();
+        int maximoY = altoPantalla -ivDuck.getHeight();
+
+        //Generamos 2 numeros aleatorios, uno para coordenada
+        //x y otro para y
+        int randomX = aleatorio.nextInt((maximoX - min) + 1);
+        int randomY = aleatorio.nextInt((maximoY - min) + 1);
+
+        //Utilizamos los numeros aleatorios para mover el pato
+        //a esa posicion
+        ivDuck.setX(randomX);
+        ivDuck.setY(randomY);
 
 
 
     }
+
+
+}
 
 
 
