@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:src="@drawable/title"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -29,9 +29,10 @@
         android:hint="Escribe tu nick"
         android:textColor="@android:color/white"
         android:textColorLink="@android:color/white"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        />
 
     <Button
         android:id="@+id/buttonStart"
@@ -41,7 +42,16 @@
         android:backgroundTint="@color/colorPrimary"
         android:text="Iniciar Juego"
         android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="@+id/editTextNick"
         app:layout_constraintStart_toStartOf="@+id/editTextNick"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNick" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextNick"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNick"
+
+        />
+
+
+
+
+
+
+
 </android.support.constraint.ConstraintLayout>
