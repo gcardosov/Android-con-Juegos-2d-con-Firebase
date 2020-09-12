@@ -36,12 +36,13 @@ public class GameActivity extends AppCompatActivity {
         initViewComponents();
         eventos();
         initPantalla();
+        moveDuck();
         initCuentaAtras();
 
     }
 
     private void initCuentaAtras() {
-        new CountDownTimer(60000, 1000) {
+        new CountDownTimer(10000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 long segundosRestantes = millisUntilFinished / 1000;
@@ -72,15 +73,23 @@ public class GameActivity extends AppCompatActivity {
                 .setTitle("Game over");
 
         //agreagamos los botones antes de generar el builder
-        builder.setPositiveButton("Reiniciar el juego" new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Reiniciar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // User clicked OK button
+                //Reiniciamos los valores contador, textViewDucks, gameOver, cuenta atras
+                counter = 0;
+                tvCounterDucks.setText("0");
+                gameOver = false;
+                initCuentaAtras();
+                moveDuck();
             }
         });
         builder.setNegativeButton("Salir", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // User cancelled the dialog
                 dialog.dismiss();
+                //destruimos el activity
+                finish();
             }
         });
 

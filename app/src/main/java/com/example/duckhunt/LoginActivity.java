@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 }else if(nick.length()<3){
                     etNick.setError("Debe tener al menos 3 caracteres");
                 }else{
+
                     //Limpiamos la cadena vacia para que se borre el nick cuando regresemos
                     //reutilizanmos el activity de login
                     etNick.setText("");
